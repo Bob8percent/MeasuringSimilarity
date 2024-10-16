@@ -54,11 +54,11 @@ Unityの勉強の一環として、2つのメッシュの類似度計算と、�
 
 (*1) ShapeMatching法
 
-参考: IndieVisualLab, Unity Graphics Programming vol.2, 第7章 Shape Matching - 線形代数のCGへの応用 -
+参考: [IndieVisualLab, Unity Graphics Programming vol.2, 第7章 Shape Matching - 線形代数のCGへの応用 -](https://drive.google.com/open?id=19c61gYY0m4qQQJdZb1xkvOxRD19QkyOc)
 
 (*2) ボクセル化
 
-参考: IndieVisualLab, Unity Graphics Programming vol.2, 第1章 Real-Time GPU-Based Voxelizer
+参考: [IndieVisualLab, Unity Graphics Programming vol.2, 第1章 Real-Time GPU-Based Voxelizer](https://drive.google.com/open?id=19c61gYY0m4qQQJdZb1xkvOxRD19QkyOc)
 
 (*3) Intersection over Union; IoU
 
