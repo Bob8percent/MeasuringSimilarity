@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MeasuringSimilarity : MonoBehaviour
 {
 
     [SerializeField] private GameObject _destination;
     [SerializeField] private GameObject _target;
     [SerializeField] private ComputeShader _computeShader;
-    [SerializeField, Range(16, 64)] private int _resolution = 16;
+    [SerializeField, Range(16, 128)] private int _resolution = 16;
     [SerializeField] private GameObject _similarityText;
 
     private GameObject cloneTarget;

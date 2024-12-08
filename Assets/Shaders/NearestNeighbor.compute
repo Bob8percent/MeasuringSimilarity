@@ -1,0 +1,33 @@
+#pragma kernel CalcNN
+
+StructuredBuffer<float3> _SourceVertBuffer;
+StructuredBuffer<float3> _TargetVertBuffer;
+RWStructuredBuffer<int> _NearestNeighborIndices;
+int _SourceVertCount;
+int _TargetVertCount;
+
+[numthreads(8,1,1)]
+void CalcNN (uint3 id : SV_DispatchThreadID)
+{
+    int idx = (int) id.x;
+    if (idx >= _SourceVertCount)
+        return;
+    
+    float distSq = 3.402823466e+38f;
+    int index = -1;
+    float3 sourceVert = _SourceVertBuffer[idx];
+    for (int ti = 0; ti < _TargetVertCount; ++ti)
+    {
+        float3 targetVert = _TargetVertBuffer[ti];
+        float3 diff = (targetVert - sourceVert);
+        float _distSq = dot(diff, diff);
+        
+        if (distSq > _distSq)
+        {
+            index = ti;
+            distSq = _distSq;
+        }
+    }
+    
+    _NearestNeighborIndices[idx] = index;
+}

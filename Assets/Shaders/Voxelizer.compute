@@ -1,3 +1,4 @@
+#pragma kernel SurfaceAll
 #pragma kernel SurfaceFront
 #pragma kernel SurfaceBack
 #pragma kernel Volume
@@ -152,6 +153,20 @@ float3 get_voxel_position(int x, int y, int z)
   );
 }
 
+void get_triangle_simple(
+    int idx,
+    out float3 va, out float3 vb, out float3 vc
+)
+{
+    int ia = _TriBuffer[idx * 3];
+    int ib = _TriBuffer[idx * 3 + 1];
+    int ic = _TriBuffer[idx * 3 + 2];
+
+    va = _VertBuffer[ia];
+    vb = _VertBuffer[ib];
+    vc = _VertBuffer[ic];
+}
+
 void get_triangle(
     int idx,
     out float3 va, out float3 vb, out float3 vc,
@@ -281,6 +296,20 @@ void level(
         }
     }
     _VoxelLevelBuffer[idx] = _level / max_level;
+}
+
+// construct all surface
+[numthreads(8, 1, 1)]
+void SurfaceAll(uint3 id : SV_DispatchThreadID)
+{
+    int idx = (int) id.x;
+    if (idx >= _TriangleCount)
+        return;
+    
+    float3 va, vb, vc;
+    get_triangle_simple(idx, va, vb, vc);
+    
+    surface(va, vb, vc, true);
 }
 
 // construct surface in front triangles
