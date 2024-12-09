@@ -83,7 +83,6 @@ public class KnnTest : MonoBehaviour
         Text t = _stateUI.GetComponent<Text>();
         t.text = "Calculating on CPU... ";
 
-        nnIndices = new int[] { };
         secondVertices = new Vector3[sourceVertCount];
 
         List<Vector3> points = new List<Vector3>(targetVertices);
@@ -104,7 +103,7 @@ public class KnnTest : MonoBehaviour
         }
         stopwatch.Stop();
         processTime = stopwatch.ElapsedMilliseconds;
-        t.text = "Calc NN on CPU! : " + ((int)processTime).ToString() + "ms";
+        t.text = "Calc NN on CPU! : \n" + ((int)processTime).ToString() + " ms";
     }
 
     // GPUで最近傍探索（GPUの各コアで線形探索）
@@ -150,7 +149,7 @@ public class KnnTest : MonoBehaviour
         
         stopwatch.Stop();
         processTime = stopwatch.ElapsedMilliseconds;
-        t.text = "Calc NN on GPU! : " + ((int)processTime).ToString() + "ms";
+        t.text = "Calc NN on GPU! : \n" + ((int)processTime).ToString() + " ms";
     }
 
     void OnRenderObject()

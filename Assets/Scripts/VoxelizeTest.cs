@@ -71,7 +71,7 @@ public class VoxelizeTest : MonoBehaviour
         stopwatch.Stop();
         
         float processTime = stopwatch.ElapsedMilliseconds;
-        t.text = "Voxelized on CPU! : " + ((int)processTime).ToString() + "ms";
+        t.text = "Voxelized on CPU! : \n" + ((int)processTime).ToString() + " ms";
     }
 
     // GPUでvoxelize
@@ -92,7 +92,7 @@ public class VoxelizeTest : MonoBehaviour
         stopwatch.Stop();
 
         float processTime = stopwatch.ElapsedMilliseconds;
-        t.text = "Voxelized on GPU! : " + ((int)processTime).ToString() + "ms";
+        t.text = "Voxelized on GPU! : \n" + ((int)processTime).ToString() + " ms";
     }
 
     // ギズモをシーンビューに描画する

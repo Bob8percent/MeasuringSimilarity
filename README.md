@@ -50,6 +50,30 @@ Unityの勉強の一環として、2つのメッシュの類似度計算と、�
 
 これを0から1の間でClampし、**0に近いほど水色、1に近いほど赤色**となるように描画しています。
 
+## その他
+
+### Voxelize_comparison.unity
+ボクセル化について、CPUとGPUでどの程度の差が出るのかをテストするシーンです。
+
+ボクセルの数は64 * 64 * 64です。
+
+[![Watch the video](https://img.youtube.com/vi/E57qbrPSWOI/maxresdefault.jpg)](https://www.youtube.com/watch?v=E57qbrPSWOI)
+
+### Knn_comparison.unity
+「すべてのソース点群についてターゲット点群との最近傍点ペアを生成するタスク」について、CPUとGPUでどの程度の差が出るのかをテストするシーンです。
+
+CPUで実行する際は各点についてKNNを行い、GPUで実行する際は各点についてターゲットの全点群を線形探索しております。
+
+[![Watch the video](https://img.youtube.com/vi/h4IBydusl9w/maxresdefault.jpg)](https://www.youtube.com/watch?v=h4IBydusl9w)
+
+
+### Assets/TestScript
+このディレクトリには、上記2つのタスクについて、Open3Dで実行速度をテストするスクリプトがあります。
+
+#### テストに使用したメッシュの情報
+Vertices: 35947
+Triangles: 69451
+
 ## 参照文献
 
 (*1) ShapeMatching法
@@ -77,3 +101,6 @@ Unity 2022.3.49f1
 
 ## ライセンス
 このアプリケーションでは、[Utah Teapot PBR (hackmans)](https://sketchfab.com/3d-models/utah-teapot-pbr-185b612a223d4dd5b03e55376429574f)によって提供された3Dモデルを使用しています。このモデルは、Creative Commons Attribution 4.0 International License のもとでライセンスされています。
+
+Model courtesy of Stanford University and the Stanford 3D Scanning Repository.
+
